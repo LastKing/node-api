@@ -4,6 +4,10 @@
 var http = require('http');
 
 var onResponse = (req, res)=> {
+  //这个只会抓取post表单里面的内容
+  req.on('data', function (data) {
+    console.log(data.toString());
+  });
   res.writeHead(200, {"Content-Type": "text/plain"});
   res.write('hello');
   res.end();

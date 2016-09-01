@@ -19,7 +19,7 @@ var server = net.createServer(function (socket) {
       });
       upsteamSocket.on('data', function (data) {
         socket.write(data);
-      })
+      });
     } else {
       upsteamSocket.write(data);
     }
