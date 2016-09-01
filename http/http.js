@@ -3,17 +3,16 @@
  */
 var http = require('http');
 
-var server = http.createServer((req, res)=> {
+var onResponse = (req, res)=> {
   res.writeHead(200, {"Content-Type": "text/plain"});
   res.write('hello');
   res.end();
-});
+};
 
-server.on('connection', function (err, data) {
-  console.log(data);
-});
+// var server = http.createServer(onResponse);
+var server = http.createServer();
 
-// server.get('/',);
+server.on('request', onResponse);
 
 server.listen(8080);
 
