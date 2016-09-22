@@ -3,7 +3,7 @@
  */
 var path = require('path');
 
-
+//格式话 路径
 var result = path.resolve('foo/bar', '/tmp/file/', '..', 'a/../subfile');
 console.log(result);
 //相当于：
