@@ -12,3 +12,4 @@ console.log(result);
 // cd ..
 //     cd a/../subfile
 // pwd
+//http://www.css88.com/archives/4497
