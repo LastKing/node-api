@@ -1,6 +1,26 @@
 /**
  * Created by Rain on 2016/6/2.
  */
+//https://github.com/jabez128/stream-handbook#消耗一个readable流    （这个消耗流）
+//https://github.com/jabez128/stream-handbook#writable流
+var stream = require('stream');
+
+//1.创建一个writable流
+var ws = stream.Writable();
+ws._write = function (chunk, enc, next) {    // 1.chunk代表进来的数据 ，enc 编码集
+  console.log(chunk);
+  next();
+};
+
+process.stdin.pipe(ws);
+
+// 运行方法
+// $ (echo beep; sleep 1; echo boop) | node write0.js
+// <Buffer 62 65 65 70 0a>
+// <Buffer 62 6f 6f 70 0a>
+
+
+//4. 通过文件系统生成一个流
 var fs = require("fs");
 var data = '菜鸟教程官网地址：www.fdsafsda.com';
 
