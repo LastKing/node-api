@@ -1,13 +1,13 @@
 /**
  * Created by Rain on 2016/9/1.
  */
-var fs = require('fs');
+const fs = require('fs');
 
-var rs = fs.createReadStream('test.txt', {highWaterMark: 11});
+let rs = fs.createReadStream('test.txt', {highWaterMark: 11});
 console.log(Buffer.isEncoding(rs));
 // rs.setEncoding('utf-8');
 
-var data = '';
+let data = '';
 
 rs.on('data', function (trunk) {
   data += trunk;
