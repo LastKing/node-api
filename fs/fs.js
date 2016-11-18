@@ -50,30 +50,6 @@ fs.open(__dirname + '/test.txt', 'r', '0666', function (err, fd, result) {
   console.log('4.' + fd);
 });
 
-//5. 读文件，读取打开的文件内容到缓存区中
-fs.open(__dirname + '/test.txt', 'r', function (err, fd) {
-  if (err) {
-    console.log(err);
-  } else {
-    var buffer = new Buffer(255);
-    console.log(buffer.length);
-
-    fs.read(fd, buffer, 0, 9, 3, function (err, bytesRead, buffer) {
-      if (err) {
-        throw err;
-      } else {
-        console.log(bytesRead);
-        console.log(buffer.slice(0, bytesRead).toString());
-        //读取完后，再使用fd读取时，基点是基于上次读取位置计算；
-        fs.read(fd, buffer, 0, 9, null, function (err, bytesRead, buffer) {
-          console.log(bytesRead);
-          console.log(buffer.slice(0, bytesRead).toString());
-        });
-      }
-    })
-  }
-});
-
 
 
 
