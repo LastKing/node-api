@@ -10,12 +10,12 @@ const path = require('path');
  * [options] 可指定encoding及flag ，（文件操作选项 如 r+ 读写 ； w+ 读写，文件不存在则创建）等参数
  * callback
  */
-fs.readFile(__dirname + '/test.txt', {flag: 'r+', encoding: 'utf-8'}, function (err, data) {
+fs.readFile(__dirname + '/test.txt', {flag: 'r+', encoding: 'utf8'}, function (err, data) {
   if (err) {
     console.error(err);
     return;
   }
-  console.log('1.readFile   ： ' + data);
+  console.log('1.readFile ： ' + data);
 });
 
 
@@ -38,21 +38,3 @@ fs.writeFile(__dirname + '/test2.txt', w_data, {flag: 'a'}, function (err) {
 fs.appendFile(__dirname + '/test3.txt', '使用fs.appendFile', function (err) {
   err ? console.error(err) : console.log('3.appendFile ：写入成功');
 });
-
-//4. 打开文件
-/**
- * file 文件
- * flags  操作标识，如"r",读方式打开
- * [mode] 权限，如777，表示任何用户读写可执行
- * callback 打开文件后回调函数，参数默认第一个err，第二fd是一个表示打开文件返回的描述符，windows中的文件句柄
- */
-fs.open(__dirname + '/test.txt', 'r', '0666', function (err, fd, result) {
-  console.log('4.' + fd);
-});
-
-
-
-
-
-
-

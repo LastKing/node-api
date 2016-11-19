@@ -26,7 +26,5 @@ fs.open(__dirname + '/test.txt', 'a', function (err, fd) {
       fs.close(fd);
     })
   })
-
-
 });
 
