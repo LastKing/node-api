@@ -67,40 +67,49 @@ const path = require('path');
  *           start指定文件开始读取位置
  *           end指定文件开始读结束位置
  */
-var rs = fs.createReadStream(__dirname + '/test.txt', {start: 0, end: 11});
-rs.on('open', function (fd) {
-  console.log('开始读取文件');
+var rs20 = fs.createReadStream(__dirname + '/test.txt', {start: 0, end: 11});
+rs20.on('open', function (fd) {
+  console.log('20-1.开始读取文件' + fd);
 });
 
-rs.on('data', function (data) {
-  console.log(data.toString());
+rs20.on('data', function (data) {
+  console.log('20-1 data: ' + data.toString());
 });
 
-rs.on('end', function () {
-  console.log('读取文件结束');
+rs20.on('end', function () {
+  console.log('20-1 end: 读取文件结束');
 });
 
-rs.on('close', function () {
-  console.log('文件关闭');
+rs20.on('close', function () {
+  console.log('20-1 close 文件关闭');
 });
 
-rs.on('error', function (err) {
-  console.error(err);
+rs20.on('error', function (err) {
+  console.error('20-1 error: ' + err);
 });
 
 //暂停和回复文件读取；
-rs.on('open', function () {
-  console.log('开始读取文件');
+var rs20_2 = fs.createReadStream(__dirname + '/test.txt', {start: 0, end: 11});
+rs20_2.on('open', function () {
+  console.log('20-2 open: 开始读取文件');
 });
 
-rs.pause();
+rs20_2.pause();//暂停rs20_2流
 
-rs.on('data', function (data) {
-  console.log(data.toString());
+rs20_2.on('data', function (data) {
+  console.log('20-2 data: ' + data.toString());
+});
+
+rs20_2.on('end', function () {
+  console.log('20-2 end: 读取文件结束');
+});
+
+rs20_2.on('close', function () {
+  console.log('20-2 close: 文件关闭');
 });
 
 setTimeout(function () {
-  rs.resume();
+  rs20_2.resume();// 恢复rs20_2流
 }, 2000);
 
 
@@ -119,34 +128,42 @@ setTimeout(function () {
  * [encoding],  编码
  * [callback],  写入后回调
  */
-var ws = fs.createWriteStream(__dirname + '/test.txt', {start: 0});
+var ws21 = fs.createWriteStream(__dirname + '/test.txt', {start: 0});
 var buffer = new Buffer('我也喜欢你');
 
-ws.write(buffer, 'utf8', function (err, buffer) {
-  console.log(arguments);
-  console.log('写入完成，回调函数没有参数');
+ws21.write(buffer, 'utf8', function (err, buffer) {
+  console.log('21 arguments:' + arguments);
+  console.log('21: 写入完成，回调函数没有参数');
 });
 
 //最后再写入的内容
-ws.end('再见');
+ws21.end('再见');
 
 //使用流完成复制文件操作
-var rs2 = fs.createReadStream(__dirname + '/test.txt');
-var ws2 = fs.createWriteStream(__dirname + '/test2.txt');
+var rs21_2 = fs.createReadStream(__dirname + '/test.txt');
+var ws21_2 = fs.createWriteStream(__dirname + '/test2.txt');
 
-rs2.on('data', function (data) {
-  ws2.write(data);
+ws21_2.on('open', function (fd) {
+  console.log('21_1: 要写入的数据文件已经打开，文件描述符是：' + fd);
 });
 
-ws2.on('open', function (fd) {
-  console.log('要写入的数据文件已经打开，文件描述符是：' + fd);
+rs21_2.on('data', function (data) {
+  ws21_2.write(data);
 });
 
-rs2.on('end', function () {
-  console.log('文件读取完成');
-  ws2.end('完成', function () {
-    console.log('文件全部写入完成');
-  })
+rs21_2.on('end', function () {
+  console.log('21_2 rs end: 文件读取完成');
+  ws21_2.end('完成', function () {
+    console.log('21_4 ws end : 文件全部写入完成');
+  });
+});
+
+ws21_2.on('finish', function () {
+  console.log('21_3 ws finish ; 写入完成'); //end 在finish 之后，close 在end 之后
+});
+
+ws21_2.on('close', function () {
+  console.log('21_5 ws close ; 文件关闭'); //end 在finish 之后，close 在end 之后
 });
 
 
@@ -154,25 +171,28 @@ rs2.on('end', function () {
 //表示缓存区写满，并将立即输出到目标对象中
 
 //第一个例子
-var ws = fs.createWriteStream(__dirname + '/test/test.txt');
+var ws21_3 = fs.createWriteStream(__dirname + '/test/test.txt');
 for (var i = 0; i < 10000; i++) {
-  var w_flag = ws.write(i.toString());
+  var w_flag = ws21_3.write(i.toString());
   //当缓存区写满时，输出false
   console.log(w_flag);
 }
 
 
 //第二个例子
-var ws = fs.createWriteStream(__dirname + '/test/untiyou.mp3');
-var rs = fs.createReadStream(__dirname + '/test/Until You.mp3');
-rs.on('data', function (data) {
-  var flag = ws.write(data);
+var ws21_4 = fs.createWriteStream(__dirname + '/test/Until You.mp3');
+var rs21_4 = fs.createReadStream(__dirname + '/test/untiyou.mp3');
+rs21_4.on('data', function (data) {
+  var flag = ws21_4.write(data);
   console.log(flag);
+  if (flag == false) {
+    ws21_4.close()
+  }
 });
 
 //系统缓存区数据已经全部输出触发drain事件
-ws.on('drain', function () {
-  console.log('系统缓存区数据已经全部输出。')
+ws21_4.on('drain', function () {
+  console.log('21_4 drain:  系统缓存区数据已经全部输出。')
 });
 
 // 22、管道pipe实现流读写
@@ -182,13 +202,13 @@ ws.on('drain', function () {
  * [opations] end 默认为true，表示读取完成立即关闭文件；
  */
 
-var rs = fs.createReadStream(__dirname + '/test/Until You.mp3');
-var ws = fs.createWriteStream(__dirname + '/test/untiyou.mp3');
-rs.pipe(ws);
-rs.on('data', function (data) {
-  console.log('数据可读')
+var rs22 = fs.createReadStream(__dirname + '/test/untiyou.mp3');
+var ws22 = fs.createWriteStream(__dirname + '/test/Until You.mp3');
+rs22.pipe(ws22);
+rs22.on('data', function (data) {
+  console.log('22: 数据可读')
 });
-rs.on('end', function () {
-  console.log('文件读取完成');
+rs22.on('end', function () {
+  console.log('22: 文件读取完成');
   //ws.end('再见')
 });
