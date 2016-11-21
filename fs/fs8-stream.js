@@ -185,9 +185,10 @@ var rs21_4 = fs.createReadStream(__dirname + '/test/untiyou.mp3');
 rs21_4.on('data', function (data) {
   var flag = ws21_4.write(data);
   console.log(flag);
-  if (flag == false) {
-    ws21_4.close()
-  }
+});
+
+rs21_4.on('end', function () { // 当没有数据时，关闭数据流
+  ws21_4.end();
 });
 
 //系统缓存区数据已经全部输出触发drain事件
