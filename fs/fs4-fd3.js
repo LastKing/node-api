@@ -10,8 +10,8 @@ const fs = require('fs');
 
 //fs.fsync(fd, [callback])
 /**
- * fd, 使用fs.open打开成功后返回的文件描述符
- * [callback(err, written, buffer)], 写入操作执行完成后回调函数，written实际写入字节数，buffer被读取的缓存区对象
+ * fd  使用fs.open打开成功后返回的文件描述符
+ * [callback(err, written, buffer)]  写入操作执行完成后回调函数，written实际写入字节数，buffer被读取的缓存区对象
  */
 fs.open(__dirname + '/test.txt', 'a', function (err, fd) {
   if (err)throw err;
