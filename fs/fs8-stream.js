@@ -180,7 +180,7 @@ for (var i = 0; i < 10000; i++) {
 
 
 //第二个例子
-var ws21_4 = fs.createWriteStream(__dirname + '/test/Until You.mp3');
+var ws21_4 = fs.createWriteStream(__dirname + '/test/Until You2.mp3');
 var rs21_4 = fs.createReadStream(__dirname + '/test/untiyou.mp3');
 rs21_4.on('data', function (data) {
   var flag = ws21_4.write(data);
@@ -204,7 +204,7 @@ ws21_4.on('drain', function () {
  */
 
 var rs22 = fs.createReadStream(__dirname + '/test/untiyou.mp3');
-var ws22 = fs.createWriteStream(__dirname + '/test/Until You.mp3');
+var ws22 = fs.createWriteStream(__dirname + '/test/Until You3.mp3');
 rs22.pipe(ws22);
 rs22.on('data', function (data) {
   console.log('22: 数据可读')
