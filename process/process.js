@@ -13,8 +13,8 @@ console.log(process.platform);    //当前系统平台，比如Linux。
 // console.log(process.stdin);       //指向标准输入。
 // console.log(process.stderr);      //指向标准错误。
 
+console.log(process.memoryUsage());  //内存使用情况
+                                       // node进程内存的使用情况，rss代表ram的使用情况，vsize代表总内存的使用大小，包括ram和swap
+                                       // heapTotal  heapUsed 分别代表v8引擎内存分配和正在使用的大小。
 
-function log(str) {
-  process.stdout.write(format.apply(this, arguments) + '\n');
-}
-log('test');
+
