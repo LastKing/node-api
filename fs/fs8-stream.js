@@ -178,13 +178,19 @@ for (var i = 0; i < 10000; i++) {
   console.log(w_flag);
 }
 
-
 //第二个例子
 var ws21_4 = fs.createWriteStream(__dirname + '/test/Until You2.mp3');
 var rs21_4 = fs.createReadStream(__dirname + '/test/untiyou.mp3');
 rs21_4.on('data', function (data) {
   var flag = ws21_4.write(data);
+  if (flag === false) { // 如果没有写完，暂停读取流
+    rs21_4.pause();
+  }
   console.log(flag);
+});
+
+ws21_4.on('drain', function () { // 写完后，继续读取
+  rs21_4.resume();
 });
 
 rs21_4.on('end', function () { // 当没有数据时，关闭数据流
