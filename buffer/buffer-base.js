@@ -3,6 +3,8 @@
  */
 var buffer = new Buffer('s');
 
+console.log(JSON.stringify(buffer));
+
 console.log(typeof buffer);
 console.log(buffer);
 //一个buffer对象 隐式原型连
