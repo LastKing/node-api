@@ -13,8 +13,21 @@ const server = net.createServer(function (c) {
   c.pipe(c);
 });
 
+server.maxConnection = 10;
 server.listen(8124, function () {
-  console.log("服务器已经绑定",server.address());
+  console.log("服务器已经绑定", server.address());
 });
 
-
+// 两种方式
+// const client = net.createConnection({port: 8124}, () => {
+//   //'connect' listener
+//   console.log('connected to server!');
+//   client.write('world!\r\n');
+// });
+// client.on('data', (data) => {
+//   console.log(data.toString());
+//   client.end();
+// });
+// client.on('end', () => {
+//   console.log('disconnected from server');
+// });

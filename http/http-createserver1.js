@@ -1,4 +1,5 @@
 /**
+ * postman  发送 post 请求才能截取到数据
  * Created by Rain on 2016/9/29.
  */
 var http = require('http');
