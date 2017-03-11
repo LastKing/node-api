@@ -15,23 +15,25 @@ server.on('connection', function (sock) {
   //2.设置请求 字符格式
   sock.setEncoding('utf8');
 
-  //3.监听client 来的数据，并发送welcome 信息
-  sock.on('data', function (chunk) {
-    sock.write('welcome  in server');//发送信息给客户端
+  //3.欢迎数据
+  sock.write('welcome  in server');//发送信息给客户端
 
+  //4.监听client 来的数据
+  sock.on('data', function (chunk) {
+    sock.write('server talk  client : hello ' + chunk);
     console.log('got data from client =  ' + chunk);//解析客户顿来的数据，可能是很多段
   });
 
-  //4.监听 客户结束请求
-  sock.on('end', function (data) {
+  //5.监听 客户结束请求
+  sock.on('end', function () {
     console.log('client disconnected');
   });
 
-  //5.监听 请求错误信息
+  //6.监听 请求错误信息
   sock.on('error', function (err) {
-    console.log('socket error - ', err);
+    console.error('socket error - ', err);
   });
-  
+
 });
 
 server.maxConnections = 10;
