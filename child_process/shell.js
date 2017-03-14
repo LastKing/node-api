@@ -1,4 +1,5 @@
 /**
+ * https://segmentfault.com/q/1010000008602161
  * Created by toonew on 2017/3/7.
  */
 const EXEC = require('child_process').execSync;
