@@ -6,3 +6,4 @@
 
 [node.js 如何继承 events 自定义事件及触发函数](http://yijiebuyi.com/blog/1a8cb4bf8510f8e9267c2873b4cdda33.html)
 
+[nodjs中event模块与http模块的连用](http://www.cnblogs.com/starof/p/5035522.html)

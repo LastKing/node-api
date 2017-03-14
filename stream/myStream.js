@@ -1,4 +1,6 @@
 /**
+ * https://segmentfault.com/a/1190000002446928
+ * 实现自己的流
  * Created by Rain on 2016/9/23.
  */
 var stream = require('stream');
