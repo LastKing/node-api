@@ -3,8 +3,20 @@
  */
 const crypto = require('crypto');
 
-var alice = crypto.createDiffieHellman(2048);
 
+// Generate Alice's keys...
+var alice = crypto.createDiffieHellman(2048);
 const alice_key = alice.generateKeys();
-console.log(alice_key.toString('hex'));
+
+const bob = crypto.createDiffieHellman(alice.getPrime(), alice.getGenerator());
+const bob_key = bob.generateKeys();
+
+// Exchange and generate the secret...
+const alice_secret = alice.computeSecret(bob_key);
+const bob_secret = bob.computeSecret(alice_key);
+
+// OK
+console.log(alice_secret.toString('hex') === bob_secret.toString('hex'));
+
+
 
