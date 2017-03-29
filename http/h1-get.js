@@ -20,11 +20,17 @@ var options = {
   }
 };
 
-http.get('http://www.qq.com', function (res) {
+http.get('http://www.baidu.com', function (res) {
   console.log('get response code : ' + res.statusCode);
 
-  res.on('data', function (result) {
-    console.log(result.toString());
+  var result;
+  res.setEncoding('utf8');  //gbk 类的编码 ，node本身不自带 解析，需要第三方工具 去拓展
+  res.on('data', function (chunk) {
+    result += chunk;
+  });
+
+  res.on('end', function () {
+    console.log(result);
   })
 
 }).on('error', function (err) {
