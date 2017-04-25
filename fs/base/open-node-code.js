@@ -1,3 +1,7 @@
+/**
+ * http://code.replays.net/201612/23849.html
+ * Created by Rain on 2017/04/25
+ */
 var binding = process.binding('fs'); //binding是C++与nodejs的接口，
 var FSReqWrap = binding.FSReqWrap;   //FSReqWrap是C++实现的一个方法。具体完成什么功能，不知
 
