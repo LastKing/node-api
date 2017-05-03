@@ -7,9 +7,9 @@ var stream = require('stream');
 
 //1.创建一个writable流
 var ws = stream.Writable();
-ws._write = function (chunk, enc, next) {    // 1.chunk代表进来的数据 ，enc 编码集
+ws._write = function (chunk, enc, callback) {    // 1.chunk代表进来的数据 ，enc 编码集
   console.log(chunk);
-  next();
+  callback();
 };
 
 process.stdin.pipe(ws);
