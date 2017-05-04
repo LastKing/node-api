@@ -40,7 +40,7 @@ function quitEcho(){
 }
 
 rl.on('line', function(cmd){
-  if(cmd.indexOf('quit') == 0 || cmd.indexOf('exit') == 0){
+  if(cmd.indexOf('quit') === 0 || cmd.indexOf('exit') === 0){
     quitEcho();
   }else{
     sock.write(cmd + '\r\n');
