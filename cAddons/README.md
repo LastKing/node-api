@@ -10,3 +10,8 @@ node-gyp的windows安装：
 有大量固定的套路，基本插件书写的话。
 
 具体参考官方文档，第三方博客 可能 node版本啥的 差异。。各种问题。
+
+运行步骤
+1. node-gyp configure
+2. node-gyp run 
+两个步骤
