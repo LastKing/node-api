@@ -49,6 +49,6 @@ reader.on('end', function () {
 });
 
 writer.on('finish', function () {
-  fs.writeFileSync('./outpu.txt', this._storage);
+  fs.writeFileSync('./output.txt', this._storage);
 });
 
