@@ -11,6 +11,3 @@ gen
 **/node_modules
 
 build
-
-### 禁止所有流的输出文件上传
-stream/out*.txt
