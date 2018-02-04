@@ -6,22 +6,22 @@ var hostToPort = {
 };
 
 var server = net.createServer(function (socket) {
-  var upsteamSocket;
+  var upstreamSocket;
 
   socket.on('data', function (data) {
-    if (!upsteamSocket) {
+    if (!upstreamSocket) {
       var dataString = data.toString();
       var host = dataString.split('\n')[1].split(':')[1].trim();
 
-      upsteamSocket = new net.Socket();
-      upsteamSocket.connect(hostToPort[host], function () {
-        upsteamSocket.write(data);
+      upstreamSocket = new net.Socket();
+      upstreamSocket.connect(hostToPort[host], function () {
+        upstreamSocket.write(data);
       });
-      upsteamSocket.on('data', function (data) {
+      upstreamSocket.on('data', function (data) {
         socket.write(data);
       });
     } else {
-      upsteamSocket.write(data);
+      upstreamSocket.write(data);
     }
   });
 });
