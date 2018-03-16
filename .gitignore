@@ -11,3 +11,5 @@ gen
 **/node_modules
 
 build
+
+zlib/nodejs-compressing-demo
