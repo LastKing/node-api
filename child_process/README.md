@@ -19,4 +19,5 @@ Node.js 内建 IPC 的问题 [参考2中简述这类问题]
 参考：
 1. 官方文档，最重要的
 2. 引发这一堆思考的文章（其中children_process部分）[Node.js cluster 踩坑小结](https://zhuanlan.zhihu.com/p/27069865)
-3. demo文件例子出处[fork的一个例子](http://blog.csdn.net/chy555chy/article/details/52556318)
+3. 参考2的更新版本[进程](https://github.com/ElemeFE/node-interview/blob/master/sections/zh-cn/process.md#process)
+4. demo文件例子出处[fork的一个例子](http://blog.csdn.net/chy555chy/article/details/52556318)
