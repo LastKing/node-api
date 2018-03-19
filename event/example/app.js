@@ -6,7 +6,7 @@ var blog = require('./method/blog');
 
 
 var webServer = function (req, res) {
-  if (req.url != '/favicon.ico') {
+  if (req.url !== '/favicon.ico') {
     var newblog = {title: "标题", content: "内容"};
     blog.blog_save(newblog);
 
