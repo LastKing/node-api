@@ -1,13 +1,15 @@
-# node evenloop 
+# node event loop
 
-evenloop 是js运行环境(runtime)提供的功能，js本身无这个功能
+**注意此处讲的event loop 是node的,并不是浏览器的**
+
+event loop 是js运行环境(runtime)提供的功能，js本身无这个功能
 
 v8是引擎，node是运行环境
 v8是engine，node是runtime
 
 事件轮询的6个基本阶段
 
-![evenloop](./evenloop.png)
+![eventloop](./eventloop.png)
 
 1. timer ：执行timer（setTimeout, setInterval）定的callback
 2. I/O callbacks ：
