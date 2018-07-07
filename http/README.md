@@ -9,5 +9,10 @@
 6. 执行parserOnHeadersComplete，会创建一个 IncomingMessage 的实例，将parser header的一些结构赋予它， 这个实例就是用户会接触到的 req，parserOnHeadersComplete处理完成之后会触发parserOnIncoming。
 7. parserOnIncoming会创建一个 ServerResponse 实例 res，也就是用户能够接触到的res，然后把req和res作为参数触发 server的request事件（来自用户）。
 
+
+## http.agent
+该模块负责为 HTTP 客户端管理连接的持续与复用,维护到一个客户端给定\[ip:port\]之间的复用。具体详解node文档官网
+
+
 ####参考：
 1. [nodeJs源码-http server](http://liyangready.github.io/2015/09/16/nodejs%E6%BA%90%E7%A0%81-http-server/)
