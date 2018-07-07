@@ -10,15 +10,15 @@ const hmac = crypto.createHmac('sha256', 'a secret');
 hmac.on('readable', () => {
   const data = hmac.read();
   if (data)
-    console.log("hmac1  :" + data.toString('hex'));
+    console.log("hmac1  :" + data.toString('base64'));
   // Prints:
   //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
 });
 
-//方式2
 hmac.write('some data to hash');
 hmac.end();
 
+//方式2
 const fs = require('fs');
 const hmac2 = crypto.createHmac('sha256', 'a secret');
 
@@ -30,6 +30,6 @@ input.pipe(hmac2).pipe(process.stdout);
 const hmac3 = crypto.createHmac('sha256', 'a secret');
 
 hmac3.update('some data to hash');
-console.log("hmac3  :" + hmac3.digest('hex'));
+console.log("hmac3  :" + hmac3.digest('base64'));
 // Prints:
 //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
