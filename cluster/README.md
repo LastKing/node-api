@@ -21,6 +21,7 @@ demo1 demo2 demo3出自参考1 2，对cluster 的演化过程又基本了解，�
 1. cluster基本流程(上)[链接](http://taobaofed.org/blog/2015/11/03/nodejs-cluster/)
 2. cluster基本流程(下)[链接](http://taobaofed.org/blog/2015/11/10/nodejs-cluster-2/)
 3. 基本完整剖析了整个cluster过程[链接](https://cnodejs.org/topic/596ffb9b3f0ab31540ed4b91)
+4. 类似3的文档，但是更加多代码+注释[链接](https://juejin.im/entry/5b0f34edf265da092406398d)
 4. 从process-》ChildrenProcess-》cluster[node cluster](https://zhuanlan.zhihu.com/p/27069865)
 
 
