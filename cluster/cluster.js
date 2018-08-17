@@ -11,13 +11,13 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 
-  cluster.on('exit', (worker, code, signal)=> {
+  cluster.on('exit', (worker, code, signal) => {
     console.log(`worker ${worker.process.pid} died`);
-  })
+  });
+
 } else {
-  http.createServer((req, res)=> {
+  http.createServer((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
   }).listen(8000);
 }
-
