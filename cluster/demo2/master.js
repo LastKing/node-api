@@ -14,8 +14,10 @@ for (var i = 0; i < 4; i++) {
 
 var handle = net._createServerHandle('0.0.0.0', 3002);
 handle.listen();
-handle.onconnection = function (err, handle) {
+//这个onconncetion 可以理解会有新的链接来时，
+//会产生一个新的handle,将这个handle分给work，进行业务处理
+handle.onconnection = function (err, handle2) {
   var worker = workers.pop();
-  worker.send({}, handle);
+  worker.send({}, handle2);
   workers.unshift(worker);
 };

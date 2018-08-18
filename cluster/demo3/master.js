@@ -21,5 +21,3 @@ let message = {hello: 'worker', pid: process.pid};
 let string = JSON.stringify(message) + '\n';
 let req = new WriteWrap();
 channel.writeUtf8String(req, string, null);
-
-

@@ -2,8 +2,8 @@
  * http://code.replays.net/201612/23849.html
  * Created by Rain on 2017/04/25
  */
-var binding = process.binding('fs'); //binding是C++与nodejs的接口，
-var FSReqWrap = binding.FSReqWrap;   //FSReqWrap是C++实现的一个方法。具体完成什么功能，不知
+const binding = process.binding('fs'); //binding是C++与nodejs的接口，
+const FSReqWrap = binding.FSReqWrap;   //FSReqWrap是C++实现的一个方法。具体完成什么功能，不知
 
 //校验 mode  数字 （也就是权限）
 function modeNum(m, def) {
@@ -16,7 +16,7 @@ function modeNum(m, def) {
     return m;
   if (util.isString(m))
     return parseInt(m, 8);
-  if (def)      return modeNum(def);
+  if (def) return modeNum(def);
   return undefined;
 }
 
@@ -37,7 +37,7 @@ function makeCallback(cb) {
 function nullCheck(path, callback) {    //判断path是否合法，就是不能再path中，包含空格符。
   if (('' + path).indexOf('\u0000') !== -1) {
     var er = new Error('Path must be a string without null bytes.');
-    if (!callback)        throw er;      //如果不合法，则传入err，并执行回调函数
+    if (!callback) throw er;      //如果不合法，则传入err，并执行回调函数
     process.nextTick(function () {
       callback(er);
     });
