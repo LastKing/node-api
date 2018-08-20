@@ -37,6 +37,8 @@ demo1 2位cluster的进化历史
     * 为send的底层 的一部分  process.binding('stream_wrap').WriteWrap;
 
 
+## 相关源码知识
+
 1. 了解 child_process 中的 exec  spawn fork 基本概念（fork是用spawn包装的专门用来运行node程序的）
 2. 了解 process 中的send方法，可以完成fork生成node 父子进程完成通讯
     1. 普通的信息 on('messages')可以监听到
@@ -53,4 +55,4 @@ demo1 2位cluster的进化历史
 2. cluster基本流程(下)[链接](http://taobaofed.org/blog/2015/11/10/nodejs-cluster-2/)
 3. 基本完整剖析了整个cluster过程[链接](https://cnodejs.org/topic/596ffb9b3f0ab31540ed4b91)
 4. 类似3的文档，但是更加多代码+注释[链接](https://juejin.im/entry/5b0f34edf265da092406398d)
-4. 从process-》ChildrenProcess-》cluster[node cluster](https://zhuanlan.zhihu.com/p/27069865)
+4. 饿了么一篇cluster的文章，有一点点参考意义[node cluster](https://zhuanlan.zhihu.com/p/27069865)
