@@ -1,4 +1,6 @@
 /**
+ * 官方第一个例子  8.11.4
+ *
  * create by toonew on 2018/3/17
  */
 const vm = require('vm');
