@@ -1,4 +1,6 @@
 /**
+ * binding(c++代码) 方式实现，
+ * 这样写有严重的性能问题，每次都生成Timer对象
  * Created by Rain on 2018/7/9
  */
 const Timer = process.binding('timer_wrap').Timer;
@@ -14,4 +16,3 @@ function setTimeout(fn, ms) {
 
 // 试一试
 setTimeout(() => console.log('timeout!'), 1000);
-
