@@ -3,7 +3,7 @@
  */
 var http = require('http');
 
-var onResponse = (req, res)=> {
+var onResponse = function (req, res) {
   //这个只会抓取post表单里面的内容
   req.on('data', function (data) {
     console.log(data.toString());
@@ -19,4 +19,3 @@ var server = http.createServer();
 server.on('request', onResponse);
 
 server.listen(8080);
-
