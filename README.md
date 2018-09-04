@@ -12,3 +12,4 @@
 5. 2018/03/20 增加buffer的理解，了解buffer存储和操作分离，理解TypedArray与Uint8Array之间的关系。
 6. 2018/08/22 vm模块，基础方法完全理解，但是还是没有场景，node源码bootstrap.js和module.js倒是有使用
 7. 2018/08/29 timer底层的学习和了解
+8. 2018/09/05 stream流的底层实现学习了解，基本了解了stream的共组流程，可写流和可读流学习完成，基本了解。

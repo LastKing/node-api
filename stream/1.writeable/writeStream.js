@@ -1,5 +1,8 @@
 /**
- * 创建一个自己的流
+ * 创建一个自己的流，该案例 使用 stream 模块实现了一个 自己的流
+ * 这并不是一个很好的案例，因为重写的是实例的方法
+ * 而不是 重写 构造函数 和 原型链上的方法，
+ * 所以这里严格意义并不是一个标准的自我实现的流
  * https://github.com/jabez128/stream-handbook
  * Created by Rain on 2016/6/2.
  */
@@ -22,6 +25,5 @@ ws._write = function (chunk, enc, callback) {    // 1.chunk代表进来的数据
 process.stdin.pipe(ws);
 
 // 运行方法
-// $ (echo beep; sleep 1; echo boop) | node write0.js
+// $ echo boop | node writeStream.js
 // <Buffer 62 65 65 70 0a>
-// <Buffer 62 6f 6f 70 0a>
