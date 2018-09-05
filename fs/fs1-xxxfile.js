@@ -1,4 +1,7 @@
 /**
+ * fs readFile 最简单的方式，
+ * 但是会有内存爆炸的问题，因为他是吧文件整个读入内存
+ *
  * Created by Rain on 2016/11/17.
  */
 const fs = require('fs');
@@ -10,7 +13,7 @@ const path = require('path');
  * [options] 可指定encoding及flag ，（文件操作选项 如 r+ 读写 ； w+ 读写，文件不存在则创建）等参数
  * callback
  */
-fs.readFile(__dirname + '/test.txt', {flag: 'r+', encoding: 'utf8'}, function (err, data) {
+fs.readFile(path.join(__dirname, './test.txt'), {flag: 'r+', encoding: 'utf8'}, function (err, data) {
   if (err) {
     console.error(err);
     return;
