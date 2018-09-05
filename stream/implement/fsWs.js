@@ -68,20 +68,13 @@ WriteStream.prototype._write = function (data, encoding, callback) {
     this.pos += data.length;
 };
 
+//可写文件流 通用模式 只重会调用_final, 并没调用_destroy，因为end只会触发finish事件，进而触发_final
+WriteStream.prototype._final = function (callback) {
+  fs.close(this.fd, function (err) {
+    if (err) return console.error(err);
+    console.log('关闭文件句柄');
+    callback();
+  })
+};
 
-let ws = createWriteStream('./test.txt');
-ws.write('test');
-ws.write('test');
-let status1 = ws.write('test');
-
-let str = '';
-for (let i = 0; i < 10000; i++) {
-  str += "str";
-}
-let status2 = ws.write(str);
-
-console.log(status1, status2);
-
-ws.end('drain', function () {
-  console.log('之前的写入已经完成，可以继续写入');
-});
+module.exports = {createWriteStream};
